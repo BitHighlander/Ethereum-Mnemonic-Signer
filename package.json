@@ -1,0 +1,9 @@
+{
+  "name": "Ethereum_Mnemonic_Signer",
+  "version": "1.0.0",
+  "description": "Sign Ethereum transactions with a mnemonic and optional HD path, or private key.",
+  "main": "index.js",
+  "repository": "https://github.com/elmutt/Ethereum-Mnemonic-Signer",
+  "license": "MIT",
+  "private": false
+}
