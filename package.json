@@ -1,5 +1,5 @@
 {
-  "name": "ethereum_mnemonic_signer",
+  "name": "eth_mnemonic_signer",
   "version": "1.0.0",
   "description": "Sign Ethereum transactions with a mnemonic and optional HD path.",
   "main": "dist/index.js",
