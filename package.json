@@ -1,6 +1,6 @@
 {
   "name": "eth_mnemonic_signer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Sign Ethereum transactions with a mnemonic and optional HD path.",
   "main": "dist/index.js",
   "repository": "https://github.com/elmutt/Ethereum-Mnemonic-Signer",
