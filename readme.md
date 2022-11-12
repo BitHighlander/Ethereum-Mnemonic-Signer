@@ -30,6 +30,7 @@ await getPrivateKey(mnemonic)
 
 // custom hd path
 await getAddress(mnemonic, `m/44'/60'/0'/0/1`)
-`0xfa01a39f8abaeb660c3137f14a310d0b414b2a15`
+=
+0xfa01a39f8abaeb660c3137f14a310d0b414b2a15
 
 ```
