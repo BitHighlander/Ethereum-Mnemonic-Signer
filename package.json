@@ -1,9 +1,19 @@
 {
-  "name": "Ethereum_Mnemonic_Signer",
+  "name": "ethereum_mnemonic_signer",
   "version": "1.0.0",
-  "description": "Sign Ethereum transactions with a mnemonic and optional HD path, or private key.",
-  "main": "index.js",
+  "description": "Sign Ethereum transactions with a mnemonic and optional HD path.",
+  "main": "dist/index.js",
   "repository": "https://github.com/elmutt/Ethereum-Mnemonic-Signer",
   "license": "MIT",
-  "private": false
+  "private": false,
+  "dependencies": {
+    "bip39": "^3.0.4",
+    "ethereumjs-wallet": "^1.0.2",
+    "ethers": "^5.7.2",
+    "web3": "^1.8.1"
+  },
+  "scripts": {
+    "build": "tsc index.ts example.ts --outDir dist",
+    "example": "yarn build && node ./dist/example.js"
+  }
 }
