@@ -16,6 +16,13 @@ export type EthTx = {
     chainId?: number
 }
 
+export const signMessage = async (message: string, mnemonic: string, bip44Path: string = `m/44'/60'/0'/0/0`) => {
+    const hdWallet = hdkey.fromMasterSeed(await mnemonicToSeed(mnemonic))
+    const privateKey = hdWallet.derivePath(bip44Path).getWallet().getPrivateKey().toString("hex")
+    const ethersWallet = new ethers.Wallet(privateKey)
+    return ethersWallet.signMessage(message)
+}
+
 export const signTx = async (tx: EthTx, mnemonic: string, bip44Path: string = `m/44'/60'/0'/0/0`) => {
     const hdWallet = hdkey.fromMasterSeed(await mnemonicToSeed(mnemonic))
     const privateKey = hdWallet.derivePath(bip44Path).getWallet().getPrivateKey().toString("hex")
