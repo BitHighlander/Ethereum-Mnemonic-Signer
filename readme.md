@@ -16,6 +16,8 @@ const transaction = {
     chainId: 1,
 }
 
+const message = 'Message to sign'
+
 await getAddress(mnemonic)
 =
 0x73d0385f4d8e00c5e6504c6030f47bf6212736a8
@@ -27,6 +29,11 @@ await signTx(transaction, mnemonic)
 await getPrivateKey(mnemonic)
 =
 759e46263f1505994d11142d70027975c9b9fef15489b09bd987eb8a31aba0db
+
+await signmessage(message, mnemonic)
+=
+0xb12c2106ce0983e5fb271b06d23f8e6c17dc3f05a1db17e9bcb4f925fd84157021a1ef392780ac19995eeca7f01851260b7c7fcd09a8f6dd80f3604107b9a48a1c
+
 
 // custom hd path
 await getAddress(mnemonic, `m/44'/60'/0'/0/1`)
