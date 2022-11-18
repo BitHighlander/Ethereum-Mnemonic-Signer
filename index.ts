@@ -1,4 +1,4 @@
-import { mnemonicToSeed } from 'bip39'
+import { mnemonicToSeed, validateMnemonic } from 'bip39'
 import { hdkey } from 'ethereumjs-wallet'
 import { ethers } from 'ethers'
 
@@ -17,6 +17,7 @@ export type EthTx = {
 }
 
 export const signMessage = async (message: string, mnemonic: string, bip44Path: string = `m/44'/60'/0'/0/0`) => {
+    if(!validateMnemonic(mnemonic)) throw new Error('invalid mnemonic')
     const hdWallet = hdkey.fromMasterSeed(await mnemonicToSeed(mnemonic))
     const privateKey = hdWallet.derivePath(bip44Path).getWallet().getPrivateKey().toString("hex")
     const ethersWallet = new ethers.Wallet(privateKey)
@@ -24,6 +25,7 @@ export const signMessage = async (message: string, mnemonic: string, bip44Path: 
 }
 
 export const signTx = async (tx: EthTx, mnemonic: string, bip44Path: string = `m/44'/60'/0'/0/0`) => {
+    if(!validateMnemonic(mnemonic)) throw new Error('invalid mnemonic')
     const hdWallet = hdkey.fromMasterSeed(await mnemonicToSeed(mnemonic))
     const privateKey = hdWallet.derivePath(bip44Path).getWallet().getPrivateKey().toString("hex")
     const ethersWallet = new ethers.Wallet(privateKey)
@@ -31,12 +33,14 @@ export const signTx = async (tx: EthTx, mnemonic: string, bip44Path: string = `m
 }
 
 export const getAddress = async (mnemonic: string, bip44Path: string = `m/44'/60'/0'/0/0`) =>{
+    if(!validateMnemonic(mnemonic)) throw new Error('invalid mnemonic')
     const hdWallet = hdkey.fromMasterSeed(await mnemonicToSeed(mnemonic))
     const wallet = hdWallet.derivePath(bip44Path).getWallet()
     return '0x' + wallet.getAddress().toString("hex")
 }
 
 export const getPrivateKey = async (mnemonic: string, bip44Path: string = `m/44'/60'/0'/0/0`) => {
+    if(!validateMnemonic(mnemonic)) throw new Error('invalid mnemonic')
     const hdWallet = hdkey.fromMasterSeed(await mnemonicToSeed(mnemonic))
     return hdWallet.derivePath(bip44Path).getWallet().getPrivateKey().toString("hex")
 }
