@@ -17,17 +17,13 @@ export type EthTx = {
 }
 
 export const signMessage = async (message: string, mnemonic: string, bip44Path: string = `m/44'/60'/0'/0/0`) => {
-    if(!validateMnemonic(mnemonic)) throw new Error('invalid mnemonic')
-    const hdWallet = hdkey.fromMasterSeed(await mnemonicToSeed(mnemonic))
-    const privateKey = hdWallet.derivePath(bip44Path).getWallet().getPrivateKey().toString("hex")
+    const privateKey = await getPrivateKey(mnemonic, bip44Path)
     const ethersWallet = new ethers.Wallet(privateKey)
     return ethersWallet.signMessage(message)
 }
 
 export const signTx = async (tx: EthTx, mnemonic: string, bip44Path: string = `m/44'/60'/0'/0/0`) => {
-    if(!validateMnemonic(mnemonic)) throw new Error('invalid mnemonic')
-    const hdWallet = hdkey.fromMasterSeed(await mnemonicToSeed(mnemonic))
-    const privateKey = hdWallet.derivePath(bip44Path).getWallet().getPrivateKey().toString("hex")
+    const privateKey = await getPrivateKey(mnemonic, bip44Path)
     const ethersWallet = new ethers.Wallet(privateKey)
     return ethersWallet.signTransaction(tx)
 }
