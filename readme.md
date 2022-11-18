@@ -18,13 +18,13 @@ const transaction = {
 
 const message = 'Message to sign'
 
-await getAddress(mnemonic)
-=
-0x73d0385f4d8e00c5e6504c6030f47bf6212736a8
-
 await signTx(transaction, mnemonic)
 =
 0xf8648082012383030d40948a65ac0e23f31979db06ec62af62b132a6df47418201238025a03ab47df7bc1fbc3c491fb35d0261b085ae9840c4ecfe72a2e29543045cd82c2fa003833f1220a80b11ad6eb6b55068604612bedf91dd5480f594aeb1efa0612e4a
+
+await getAddress(mnemonic)
+=
+0x73d0385f4d8e00c5e6504c6030f47bf6212736a8
 
 await getPrivateKey(mnemonic)
 =
