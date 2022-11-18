@@ -1,4 +1,4 @@
-import { EthTx, getAddress, getPrivateKey, signMessage, signTx } from "."
+import { EthTx, getAddress, getPrivateKey, signMessage, signTx, validateMnemonic } from "."
 
 const mnemonic = 'all all all all all all all all all all all all'
 
@@ -27,6 +27,9 @@ const main = async () => {
     const privateKey1 = await getPrivateKey(mnemonic, bip44Path)
     const signedMessage1 = await signMessage(message, mnemonic, bip44Path)
 
+    const validateResult0 = await validateMnemonic(mnemonic)
+    const validateResult1 = await validateMnemonic('cat all all all all all all all all all all all')
+
     console.log('address0', address0)
     console.log('signedTx0', signedTx0)
     console.log('privateKey0', privateKey0)
@@ -36,6 +39,9 @@ const main = async () => {
     console.log('signedTx1', signedTx1)
     console.log('privateKey1', privateKey1)
     console.log('signedMessage1', signedMessage1)
+
+    console.log('validateResult0', validateResult0)
+    console.log('validateResult1', validateResult1)
 
 }
 main()
